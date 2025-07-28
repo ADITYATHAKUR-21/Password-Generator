@@ -1,14 +1,13 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import Navbar from './Navbar.jsx'
-import Password from './Password.jsx'
-import Tips from './Tips.jsx'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import { ClerkProvider } from '@clerk/clerk-react';
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Navbar/>
-    <Password />
-    <Tips/>
-  </StrictMode>,
-)
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+    <App />
+  </ClerkProvider>
+);
+
